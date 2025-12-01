@@ -1,125 +1,155 @@
-# CourseMaster — Modern EdTech Platform
+# CourseMaster — Full-Featured MERN E-Learning Platform
 
-A clean, professional, and fully scalable EdTech platform designed with a custom
-design system focused on clarity, consistency, and usability.  
-This repository contains the **frontend** and **design system implementation**
-for the application.
+CourseMaster is a modern, scalable, and production-ready **E-learning platform**
+built using the **MERN stack**.  
+The goal of this project is to simulate a real-world EdTech application that
+supports thousands of students, instructors, and administrators — while ensuring
+performance, clarity, and maintainability.
 
----
-
-## Overview
-
-CourseMaster is built to deliver a modern digital learning experience with a
-visually clean interface, strong accessibility standards, and a component-driven
-architecture.  
-Using a consistent design system and reusable UI patterns, the platform enables
-fast development, scalable code, and a polished user experience.
+This project includes a complete **authentication system**, **course management
+module**, **enrollment flow**, **student dashboard**, **admin dashboard**, and
+**course consumption features** such as progress tracking, assignments, and
+quizzes.
 
 ---
 
-## Design System — Brand Identity
+## 1. Project Overview
 
-### **Brand Style**
+CourseMaster enables:
 
-- Professional, clean, minimal
-- Rounded corners (8–16px)
-- Card-based layout
-- Soft shadows
-- Spacious layout and consistent spacing system
+### **Students**
 
-### **Color Palette**
+- Browse, search, filter, and sort courses
+- View course details
+- Enroll in courses
+- Access a student dashboard
+- Watch lessons & track progress
+- Submit assignments
+- Take quizzes with instant scoring
 
-| Usage      | Color       | Hex       |
-| ---------- | ----------- | --------- |
-| Primary    | Indigo      | `#4F46E5` |
-| Secondary  | Teal        | `#06B6D4` |
-| Accent     | Soft Indigo | `#A5B4FC` |
-| Background | Light Gray  | `#F5F7FA` |
-| Text       | Slate Black | `#111827` |
+### **Administrators**
 
-### **Typography**
+- Manage courses (Create, Read, Update, Delete)
+- Create and manage batches
+- Manage enrollments
+- Review student assignments
 
-- **Font Family:** Inter
-- **Headings:** Inter Semibold
-- **Body Text:** Inter Regular
-
----
-
-## 🧩 Component Library
-
-The design system includes:
-
-### **Core Components**
-
-- Primary, Secondary Buttons
-- Input fields
-- Dropdowns
-- Search bar
-- Cards
-- Dashboard Tiles
-
-### **Navigation**
-
-- Top Navigation Bar
-- Sidebar Navigation
-
-All components follow:
-
-- Consistent spacing
-- Rounded radius (8–16px)
-- Soft-shadow depth levels
-- Mobile-responsive grid layout
+The platform is designed with **clean architecture**, **secure APIs**,
+**optimized queries**, and **scalable data models**, reflecting real-world
+EdTech requirements.
 
 ---
 
-## Features
-
-### **EdTech Features**
-
-- Dashboard for students
-- Course listing + categories
-- Progress tracking UI components
-- Card-based course previews
-- Search & filter components
-- Clean, distraction-free learning interface
-
-### **Design System Features**
-
-- Centralized color tokens
-- Scalable typography system
-- Utility-based spacing + layout grid
-- UI consistency across all pages
-- Modern and minimal look
-
-### **Development Features**
-
-- Modular React component architecture
-- TailwindCSS utility system
-- Reusable UI core components
-- Optimized layout components
-- Clean project structure
-
----
-
-## Tech Stack
+## 2. Technology Stack (Mandatory)
 
 ### **Frontend**
 
-- React.js
-- Vite
-- TailwindCSS
-- React Router
-- Lucide Icons
+- React.js or Next.js (App Router / Pages Router)
+- Redux Toolkit or Context API
+- Axios / Fetch API
+- TailwindCSS (optional)
 
-### **Design & UI**
+### **Backend**
 
-- Tailwind-based design tokens
-- Reusable component library
-- Card & grid-based layout system
+- Node.js
+- Express.js
+- JWT Authentication
+- Bcrypt for password hashing
 
-### **Development Tools**
+### **Database**
 
-- Prettier
-- Git & GitHub
+- MongoDB
+- Mongoose ODM
+
+---
+
+## 3. Key Functional Requirements
+
+### A. Authentication & Authorization
+
+#### **Student**
+
+- Register, Login, Logout
+- JWT-based authentication
+- Hashed passwords (bcrypt)
+
+#### **Admin**
+
+- Separate login
+- Can use seeder or secret registration key
+- Access protected admin-only routes
+
+#### **Security**
+
+- JWT tokens
+- Protected APIs
+- Role-based access control
+- No access to dashboard without authentication
+
+---
+
+## B. Public Pages (Unprotected)
+
+### **1. Home / Course Listing**
+
+- Display all available courses
+- **Server-Side Pagination**
+- **Search** (title / instructor)
+- **Sorting** (Price Low → High / High → Low)
+- **Filtering** (Category / Tags)
+
+### **2. Course Details**
+
+- Full course information (title, description, instructor, syllabus, price)
+- “Enroll Now” button
+  - If logged in → Enroll
+  - If not logged in → Redirect to login
+
+---
+
+## C. Student Features (Protected)
+
+### **1. Student Dashboard**
+
+- Display enrolled courses
+- Show course progress (“40% Completed”)
+
+### **2. Course Player / Consumption**
+
+- Play embedded videos (YouTube/Vimeo)
+- Mark lessons as completed
+- Dynamic progress bar updates
+
+### **3. Assignments & Quizzes**
+
+#### **Assignments**
+
+- Submit a Google Drive link or text-based answer
+
+#### **Quizzes**
+
+- Multiple-choice quiz per module
+- Score displayed immediately after submit
+
+---
+
+## D. Admin Features (Protected)
+
+### **1. Course Management**
+
+- CRUD operations
+- Upload syllabus
+- Add video links
+- Add tags & categories
+- Create “Batches” (e.g., Batch 1 — Starts Jan 1st)
+
+### **2. Enrollment Management**
+
+- View all students enrolled in a course or batch
+
+### **3. Assignment Review**
+
+- View student-submitted assignments
+- Review and update status
 
 ---
