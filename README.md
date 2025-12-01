@@ -1,16 +1,125 @@
-# React + Vite
+# CourseMaster — Modern EdTech Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, professional, and fully scalable EdTech platform designed with a custom
+design system focused on clarity, consistency, and usability.  
+This repository contains the **frontend** and **design system implementation**
+for the application.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## React Compiler
+CourseMaster is built to deliver a modern digital learning experience with a
+visually clean interface, strong accessibility standards, and a component-driven
+architecture.  
+Using a consistent design system and reusable UI patterns, the platform enables
+fast development, scalable code, and a polished user experience.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## Design System — Brand Identity
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### **Brand Style**
+
+- Professional, clean, minimal
+- Rounded corners (8–16px)
+- Card-based layout
+- Soft shadows
+- Spacious layout and consistent spacing system
+
+### **Color Palette**
+
+| Usage      | Color       | Hex       |
+| ---------- | ----------- | --------- |
+| Primary    | Indigo      | `#4F46E5` |
+| Secondary  | Teal        | `#06B6D4` |
+| Accent     | Soft Indigo | `#A5B4FC` |
+| Background | Light Gray  | `#F5F7FA` |
+| Text       | Slate Black | `#111827` |
+
+### **Typography**
+
+- **Font Family:** Inter
+- **Headings:** Inter Semibold
+- **Body Text:** Inter Regular
+
+---
+
+## 🧩 Component Library
+
+The design system includes:
+
+### **Core Components**
+
+- Primary, Secondary Buttons
+- Input fields
+- Dropdowns
+- Search bar
+- Cards
+- Dashboard Tiles
+
+### **Navigation**
+
+- Top Navigation Bar
+- Sidebar Navigation
+
+All components follow:
+
+- Consistent spacing
+- Rounded radius (8–16px)
+- Soft-shadow depth levels
+- Mobile-responsive grid layout
+
+---
+
+## Features
+
+### **EdTech Features**
+
+- Dashboard for students
+- Course listing + categories
+- Progress tracking UI components
+- Card-based course previews
+- Search & filter components
+- Clean, distraction-free learning interface
+
+### **Design System Features**
+
+- Centralized color tokens
+- Scalable typography system
+- Utility-based spacing + layout grid
+- UI consistency across all pages
+- Modern and minimal look
+
+### **Development Features**
+
+- Modular React component architecture
+- TailwindCSS utility system
+- Reusable UI core components
+- Optimized layout components
+- Clean project structure
+
+---
+
+## Tech Stack
+
+### **Frontend**
+
+- React.js
+- Vite
+- TailwindCSS
+- React Router
+- Lucide Icons
+
+### **Design & UI**
+
+- Tailwind-based design tokens
+- Reusable component library
+- Card & grid-based layout system
+
+### **Development Tools**
+
+- Prettier
+- Git & GitHub
+
+---
