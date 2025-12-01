@@ -1,2 +1,23 @@
 @import 'tailwindcss';
 @plugin "daisyui";
+
+/* 
+Create a clean, modern EdTech brand identity for a platform called “CourseMaster". 
+Style vibe: professional, minimal, trustworthy.
+Color Palette:
+- Primary: #4F46E5 (Indigo)
+- Secondary: #06B6D4 (Cyan/Teal)
+- Neutral: #F5F7FA (Light gray background)
+- Text: #111827 (Dark slate)
+Typography:
+- Headings: Inter SemiBold
+- Body: Inter Regular
+Design language:
+- Rounded corners (8–16px)
+- Subtle shadows
+- White card-based UI
+- Consistent spacing (8/12/24 grid)
+Generate brand components, buttons, input fields, and card styles.
+
+
+*/

@@ -1,0 +1,64 @@
+import React, { useState, useEffect } from 'react';
+import { slide as Menu } from 'react-burger-menu';
+
+import './Navbar.css';
+import { Link, NavLink } from 'react-router';
+
+const menuLinks = [
+  { name: 'Home', path: '/' },
+  { name: 'Course', path: '/courses' },
+  { name: 'Instructors', path: '/instructors' },
+  { name: 'Testimonial', path: '/testimonial' },
+  { name: 'Blogs', path: '/blogs' },
+  { name: 'Contact Us', path: '/contact' },
+];
+
+const Navbar = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const renderLinks = (className = 'menu-item') =>
+    menuLinks.map(link => (
+      <NavLink
+        key={link.name}
+        to={link.path}
+        className={({ isActive }) =>
+          `${className} ${
+            isActive
+              ? 'text-indigo-600 font-semibold'
+              : 'text-gray-800 hover:text-indigo-600'
+          }`
+        }
+      >
+        {link.name}
+      </NavLink>
+    ));
+
+  return (
+    <header className="bg-white shadow-md">
+      <nav className="container mx-auto flex justify-between items-center p-4">
+        <Link to="/" className="text-xl lg:text-2xl font-bold ">
+          Course<span className="text-indigo-600">Master</span>
+        </Link>
+
+        {/* Desktop Menu */}
+        {!isMobile && (
+          <>
+            <div className="hidden md:flex space-x-6">{renderLinks()}</div>
+          </>
+        )}
+        <button className="btn btn-primary">Login</button>
+        {/* Mobile Burger Menu */}
+        {isMobile && <Menu right>{renderLinks()}</Menu>}
+      </nav>
+    </header>
+  );
+};
+
+export default Navbar;

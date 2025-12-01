@@ -44,10 +44,10 @@ EdTech requirements.
 
 ### **Frontend**
 
-- React.js or Next.js (App Router / Pages Router)
-- Redux Toolkit or Context API
+- React.js
+- Context API
 - Axios / Fetch API
-- TailwindCSS (optional)
+- TailwindCSS
 
 ### **Backend**
 
@@ -94,16 +94,16 @@ EdTech requirements.
 
 - Display all available courses
 - **Server-Side Pagination**
-- **Search** (title / instructor)
-- **Sorting** (Price Low → High / High → Low)
-- **Filtering** (Category / Tags)
+- **Search**
+- **Sorting**
+- **Filtering**
 
 ### **2. Course Details**
 
-- Full course information (title, description, instructor, syllabus, price)
+- Full course information
 - “Enroll Now” button
-  - If logged in → Enroll
-  - If not logged in → Redirect to login
+- If logged in → Enroll
+- If not logged in → Redirect to login
 
 ---
 
@@ -112,11 +112,11 @@ EdTech requirements.
 ### **1. Student Dashboard**
 
 - Display enrolled courses
-- Show course progress (“40% Completed”)
+- Show course progress
 
 ### **2. Course Player / Consumption**
 
-- Play embedded videos (YouTube/Vimeo)
+- Play embedded videos
 - Mark lessons as completed
 - Dynamic progress bar updates
 
@@ -141,7 +141,7 @@ EdTech requirements.
 - Upload syllabus
 - Add video links
 - Add tags & categories
-- Create “Batches” (e.g., Batch 1 — Starts Jan 1st)
+- Create “Batches”
 
 ### **2. Enrollment Management**
 
