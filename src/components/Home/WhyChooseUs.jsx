@@ -81,8 +81,8 @@ const WhyChooseUs = () => {
             >
               <div>{reason.icon}</div>
               <div>
-                <h4 className="text-lg font-semibold mb-1">{reason.title}</h4>
-                <p className="text-gray-600 text-sm">{reason.description}</p>
+                <h4 className="text-xl font-semibold mb-1">{reason.title}</h4>
+                <p className="text-gray-600">{reason.description}</p>
               </div>
             </div>
           ))}
