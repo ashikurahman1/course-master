@@ -21,3 +21,7 @@ Generate brand components, buttons, input fields, and card styles.
 
 
 */
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  background: rgba(79, 70, 255, 0.2); /* Primary color with some opacity */
+}
