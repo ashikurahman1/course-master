@@ -3,6 +3,7 @@ import { slide as Menu } from 'react-burger-menu';
 
 import './Navbar.css';
 import { Link, NavLink } from 'react-router';
+import Logo from '../../components/Logo/Logo';
 
 const menuLinks = [
   { name: 'Home', path: '/' },
@@ -43,9 +44,7 @@ const Navbar = () => {
   return (
     <header className="bg-white shadow-md">
       <nav className="container mx-auto flex justify-between items-center p-4">
-        <Link to="/" className="text-xl lg:text-2xl font-bold ">
-          Course<span className="text-indigo-600">Master</span>
-        </Link>
+        <Logo />
 
         {/* Desktop Menu */}
         {!isMobile && (

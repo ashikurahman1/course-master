@@ -62,7 +62,7 @@ const reasons = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-16 px-4 bg-gray-50">
+    <section className="py-30 px-4 bg-gray-50">
       <div className="container mx-auto text-center">
         <h2 className="text-3xl md:text-5xl font-bold  mb-5">
           Why Choose <span className="text-primary">Us?</span>

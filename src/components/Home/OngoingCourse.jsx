@@ -68,7 +68,7 @@ const courses = [
 const OngoingCourse = () => {
   return (
     <div className="">
-      <section className="container mx-auto px-4 my-15 shadow rounded-md p-10">
+      <section className="container mx-auto px-4 mb-20 pt-15 pb-15 shadow rounded-md p-10">
         <div className="">
           <h2 className="text-3xl font-semibold md:text-5xl mb-12">
             Ongoing Courses
