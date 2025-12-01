@@ -70,7 +70,7 @@ const Testimonial = () => {
             slideShadows: true,
           }}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
+          // pagination={{ clickable: true }}
           modules={[EffectCoverflow, Pagination, Autoplay]}
           className="mySwiper"
         >
@@ -86,7 +86,7 @@ const Testimonial = () => {
               />
               <div className=" ">
                 <p className="flex p-2 mb-4 text-lg md:text-xl text-center">
-                  <span className="text-gray-300">
+                  <span className="text-primary">
                     <FaQuoteLeft size={30} />
                   </span>{' '}
                   {t.feedback}
