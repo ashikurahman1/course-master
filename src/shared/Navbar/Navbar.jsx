@@ -52,7 +52,10 @@ const Navbar = () => {
             <div className="hidden md:flex space-x-6">{renderLinks()}</div>
           </>
         )}
-        <button className="btn btn-primary">Login</button>
+
+        <Link to="/login" className="btn btn-primary">
+          Login
+        </Link>
         {/* Mobile Burger Menu */}
         {isMobile && <Menu right>{renderLinks()}</Menu>}
       </nav>

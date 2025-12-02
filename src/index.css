@@ -5,3 +5,13 @@
 .swiper-slide-shadow-right {
   background: #f0f0f021; /* Primary color with some opacity */
 }
+
+input {
+  outline: none;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+input:focus {
+  border-color: #3b82f6; /* Tailwind's blue-500 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); /* Blue shadow */
+}

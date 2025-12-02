@@ -3,9 +3,9 @@ import { Link } from 'react-router';
 import heroImage from '../../assets/edtech-hero.webp';
 const Hero = () => {
   return (
-    <section className="relative min-h-[700px] w-full overflow-hidden ">
+    <section className="relative  w-full overflow-hidden ">
       <div className="absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"></div>
-      <div className="container mx-auto p-4 py-15 lg:py-30 flex flex-col-reverse xl:flex-row items-center gap-8">
+      <div className="container mx-auto p-4  pt-30 pb-10 lg:pb-20 flex flex-col-reverse xl:flex-row items-center gap-8">
         <div className="w-full xl:w-1/2 space-y-5 lg:space-y-10">
           <h1 className="text-5xl lg:text-8xl font-bold tracking-wide">
             Unlock Your Potential with{' '}
