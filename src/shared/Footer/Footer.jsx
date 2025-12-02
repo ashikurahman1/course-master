@@ -15,12 +15,12 @@ const Footer = () => {
   return (
     <footer className="bg-linear-to-bl from-purple-600 via-70% to-indigo-500 pt-20 pb-10 ">
       <div className="container mx-auto px-4 text-white">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="space-y-5">
             <Link to="/" className="text-xl lg:text-2xl font-bold">
               <h3>Course Master</h3>
             </Link>
-            <p className="mt-5">
+            <p className="mt-3">
               We are Bangladesh's leading Upskilling & Job Placement Platform
             </p>
             <div className="flex gap-2  ">
@@ -60,8 +60,8 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-5">Quick Links</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xl font-semibold mb-3">Quick Links</h3>
+            <ul className="space-y-2">
               <li>
                 <Link to="/">Home</Link>
               </li>
@@ -77,8 +77,8 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-5">Contact Us</h3>
-            <div className="space-y-4">
+            <h3 className="text-xl font-semibold mb-3">Contact Us</h3>
+            <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <FaLocationDot />
                 <div>
