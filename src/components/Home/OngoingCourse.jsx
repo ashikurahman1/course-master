@@ -7,15 +7,29 @@ import useAxios from '../../hooks/useAxios';
 const OngoingCourse = () => {
   const axios = useAxios();
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios
-      .get('/courses/featured')
-      .then(res => {
+    const fetchCourses = async () => {
+      try {
+        const res = await axios.get('/courses/featured');
         setCourses(res.data.courses);
-      })
-      .catch(err => console.error(err));
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourses();
   }, [axios]);
 
+  if (loading) {
+    return (
+      <div className="container mx-auto p-10">
+        <p className="text-xl font-semibold">Loading courses...</p>
+      </div>
+    );
+  }
   return (
     <div className="">
       <section className="container mx-auto px-4 mb-20 pt-15 pb-15 shadow rounded-md p-10">
@@ -29,7 +43,7 @@ const OngoingCourse = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
           {courses.map(course => (
             <div
-              key={course._id}
+              key={course?._id}
               className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
             >
               <img
