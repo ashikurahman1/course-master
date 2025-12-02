@@ -48,13 +48,13 @@ const OngoingCourse = () => {
                 {/* Instructor Info */}
                 <div className="flex items-center mb-4">
                   <img
-                    src={course.instructor.avatar}
-                    alt={course.instructor.name}
+                    src={course?.instructor?.avatar}
+                    alt={course?.instructor?.name}
                     className="w-10 h-10 rounded-full mr-3"
                   />
                   <div>
                     <h4 className="text-gray-800 font-medium">
-                      {course.instructor.name}
+                      {course?.instructor?.name}
                     </h4>
                   </div>
                 </div>
