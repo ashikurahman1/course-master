@@ -63,7 +63,7 @@ const OngoingCourse = () => {
 
                 <div className="flex justify-between items-center mb-4">
                   <p className="text-gray-700 font-medium">
-                    {course.syllabus.length} Modules
+                    {course?.syllabus.length} Modules
                   </p>
                   <p className="text-indigo-600 font-bold">{course.price} Tk</p>
                 </div>
