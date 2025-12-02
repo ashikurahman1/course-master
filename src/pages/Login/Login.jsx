@@ -17,21 +17,11 @@ const Login = () => {
   const handleLogin = async data => {
     try {
       const res = await axios.post('/auth/login', data);
-      if (res.data?.token) {
+      if (res.data.token) {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user', JSON.stringify(res.data.user));
         toast.success('Login successful');
-
-        // if (res.data.role === 'admin') {
-        //   navigate('/admin/dashboard');
-        // } else if (res.data.role === 'instructor') {
-        //   navigate('/instructor/dashboard');
-        // } else {
-        //   navigate('/student/dashboard');
-        // }
-        if (res.data.role) {
-          navigate('/dashboard');
-        }
+        navigate('/dashboard');
       } else {
         toast.error(res.data?.message || 'Invalid credentials');
       }
