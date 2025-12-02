@@ -1,71 +1,21 @@
-import React from 'react';
-import { FaAngleRight, FaArrowRight } from 'react-icons/fa';
-import course1 from '../../assets/course1.webp';
-import course2 from '../../assets/course2.webp';
+import React, { useEffect, useState } from 'react';
+import { FaArrowRight } from 'react-icons/fa';
+
 import { Link } from 'react-router';
-const courses = [
-  {
-    id: 1,
-    title: 'React for Beginners',
-    description: 'Learn the basics of React.js and build dynamic web apps.',
-    image: course1,
-    instructor: {
-      name: 'John Doe',
-      designation: 'Senior React Instructor',
-      avatar:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIqP3VZ2Sd5KAYeHwMfZ66abEDU7iycDaXjg&s',
-    },
-    syllabus: '12 Modules',
-    price: '$49',
-  },
-  {
-    id: 2,
-    title: 'Full-Stack MERN Development',
-    description:
-      'Become a full-stack developer using MongoDB, Express, React, and Node.js.',
-    image: course2,
-    instructor: {
-      name: 'Jane Smith',
-      designation: 'Lead Full-Stack Instructor',
-      avatar:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIqP3VZ2Sd5KAYeHwMfZ66abEDU7iycDaXjg&s',
-    },
-    syllabus: '20 Modules',
-    price: '$99',
-  },
-  {
-    id: 2,
-    title: 'Full-Stack MERN Development',
-    description:
-      'Become a full-stack developer using MongoDB, Express, React, and Node.js.',
-    image: course2,
-    instructor: {
-      name: 'Jane Smith',
-      designation: 'Lead Full-Stack Instructor',
-      avatar:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIqP3VZ2Sd5KAYeHwMfZ66abEDU7iycDaXjg&s',
-    },
-    syllabus: '20 Modules',
-    price: '$99',
-  },
-  {
-    id: 2,
-    title: 'Full-Stack MERN Development',
-    description:
-      'Become a full-stack developer using MongoDB, Express, React, and Node.js.',
-    image: course2,
-    instructor: {
-      name: 'Jane Smith',
-      designation: 'Lead Full-Stack Instructor',
-      avatar:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIqP3VZ2Sd5KAYeHwMfZ66abEDU7iycDaXjg&s',
-    },
-    syllabus: '20 Modules',
-    price: '$99',
-  },
-];
+import useAxios from '../../hooks/useAxios';
 
 const OngoingCourse = () => {
+  const axios = useAxios();
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    axios
+      .get('/courses/featured')
+      .then(res => {
+        setCourses(res.data.courses);
+      })
+      .catch(err => console.error(err));
+  }, [axios]);
+
   return (
     <div className="">
       <section className="container mx-auto px-4 mb-20 pt-15 pb-15 shadow rounded-md p-10">
@@ -78,21 +28,21 @@ const OngoingCourse = () => {
         {/* Card */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
           {courses.map(course => (
-            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              {/* Course Image */}
+            <div
+              key={course._id}
+              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+            >
               <img
-                src={course.image}
-                alt={course.title}
+                src={course?.image}
+                alt={course?.title}
                 className="w-full h-48 object-cover"
               />
-
-              {/* Course Info */}
               <div className="p-4">
                 <h2 className="text-xl font-semibold text-gray-800 mb-2 line-clamp-1">
-                  {course.title}
+                  {course?.title}
                 </h2>
                 <p className="text-gray-600 mb-4 line-clamp-2">
-                  {course.description}
+                  {course?.description}
                 </p>
 
                 {/* Instructor Info */}
@@ -106,18 +56,16 @@ const OngoingCourse = () => {
                     <h4 className="text-gray-800 font-medium">
                       {course.instructor.name}
                     </h4>
-                    <h5 className="text-gray-500 text-sm">
-                      {course.instructor.designation}
-                    </h5>
                   </div>
                 </div>
 
                 <hr className="border-gray-200 mb-4" />
 
-                {/* Syllabus & Price */}
                 <div className="flex justify-between items-center mb-4">
-                  <p className="text-gray-700 font-medium">{course.syllabus}</p>
-                  <p className="text-indigo-600 font-bold">{course.price}</p>
+                  <p className="text-gray-700 font-medium">
+                    {course.syllabus.length} Modules
+                  </p>
+                  <p className="text-indigo-600 font-bold">{course.price} Tk</p>
                 </div>
 
                 {/* Enroll Button */}

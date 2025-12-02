@@ -9,6 +9,7 @@ const CreateCourse = () => {
   const axios = useAxios();
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+
   const { register, handleSubmit, control } = useForm({
     defaultValues: { syllabus: [{ topic: '', details: '' }] },
   });
