@@ -12,7 +12,7 @@ const OngoingCourse = () => {
     const fetchCourses = async () => {
       try {
         const res = await axios.get('/courses/featured');
-        setCourses(res.data.courses);
+        setCourses(res?.data?.courses || []);
       } catch (error) {
         console.error(error);
       } finally {
