@@ -13,6 +13,7 @@ import ManageEnrollment from '../pages/Dashboard/ManageEnrollment/ManageEnrollme
 import ReviewAssignment from '../pages/Dashboard/ReviewAssignment/ReviewAssignment';
 import Courses from '../pages/Courses/Courses';
 import CourseDetail from '../pages/CourseDetails/CourseDetails';
+import CourseConsump from '../pages/Dashboard/CourseConsu/CourseConsump';
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -89,6 +90,11 @@ export const router = createBrowserRouter([
       {
         path: 'review-assignment',
         Component: ReviewAssignment,
+      },
+      // Students
+      {
+        path: 'course-consumption/:courseId',
+        Component: CourseConsump,
       },
     ],
   },

@@ -14,7 +14,10 @@ const CreateCourse = () => {
   const navigate = useNavigate();
 
   const { register, handleSubmit, control, reset } = useForm({
-    defaultValues: { syllabus: [{ topic: '', details: '' }] },
+    defaultValues: {
+      syllabus: [{ topic: '', details: '' }],
+      modules: [{ title: '', videoUrl: '' }],
+    },
   });
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -31,14 +34,28 @@ const CreateCourse = () => {
           duration: course.duration,
           category: course.category,
           syllabus: course.syllabus,
+          modules: course.modules || [{ title: '', videoUrl: '' }],
         });
       });
     }
   }, [axiosSecure, id, reset]);
 
-  const { fields, append, remove } = useFieldArray({
+  const {
+    fields: syllabusFields,
+    append: appendSyllabus,
+    remove: removeSyllabus,
+  } = useFieldArray({
     control,
     name: 'syllabus',
+  });
+
+  const {
+    fields: moduleFields,
+    append: appendModule,
+    remove: removeModule,
+  } = useFieldArray({
+    control,
+    name: 'modules',
   });
 
   const handleImageUpload = async e => {
@@ -154,7 +171,7 @@ const CreateCourse = () => {
 
         <div>
           <h3 className="font-semibold">Syllabus</h3>
-          {fields.map((item, index) => (
+          {syllabusFields.map((item, index) => (
             <div key={item.id} className="flex gap-2 mb-2">
               <input
                 placeholder="Topic"
@@ -168,7 +185,7 @@ const CreateCourse = () => {
               />
               <button
                 type="button"
-                onClick={() => remove(index)}
+                onClick={() => removeSyllabus(index)}
                 className="btn btn-error"
               >
                 Remove
@@ -177,10 +194,42 @@ const CreateCourse = () => {
           ))}
           <button
             type="button"
-            onClick={() => append({ topic: '', details: '' })}
+            onClick={() => appendSyllabus({ topic: '', details: '' })}
             className="btn btn-primary mt-2"
           >
             Add Topic
+          </button>
+        </div>
+
+        <div>
+          <h3 className="font-semibold">Modules / Lessons</h3>
+          {moduleFields.map((item, index) => (
+            <div key={item.id} className="flex gap-2 mb-2">
+              <input
+                placeholder="Module Title"
+                {...register(`modules.${index}.title`, { required: true })}
+                className="input input-bordered w-1/3"
+              />
+              <input
+                placeholder="Video URL"
+                {...register(`modules.${index}.videoUrl`, { required: true })}
+                className="input input-bordered w-2/3"
+              />
+              <button
+                type="button"
+                onClick={() => removeModule(index)}
+                className="btn btn-error"
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={() => appendModule({ title: '', videoUrl: '' })}
+            className="btn btn-primary mt-2"
+          >
+            Add Module
           </button>
         </div>
 

@@ -60,9 +60,14 @@ const Navbar = () => {
           </>
         )}
         {user ? (
-          <button onClick={handleLogout} className="btn btn-secondary">
-            Logout
-          </button>
+          <div className="flex gap-2">
+            <Link to="/dashboard" className="btn btn-primary">
+              My Dashboard
+            </Link>
+            <button onClick={handleLogout} className="btn btn-secondary">
+              Logout
+            </button>
+          </div>
         ) : (
           <Link to="/login" className="btn btn-primary">
             Login

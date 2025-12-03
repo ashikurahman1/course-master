@@ -97,18 +97,6 @@ const DashboardLayout = () => {
                     <li>
                       <button
                         className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                        data-tip=" Course Consumption"
-                      >
-                        {/* Settings icon */}
-                        <FaBookOpenReader size={18} />
-                        <span className="is-drawer-close:hidden">
-                          Course Consumption
-                        </span>
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                         data-tip="Assignment"
                       >
                         {/* Settings icon */}
