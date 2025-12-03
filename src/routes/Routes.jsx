@@ -61,6 +61,10 @@ export const router = createBrowserRouter([
         Component: CreateCourse,
       },
       {
+        path: 'update-course/:id',
+        Component: CreateCourse,
+      },
+      {
         path: 'manage-courses',
         Component: ManageCourse,
       },

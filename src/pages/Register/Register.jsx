@@ -78,7 +78,7 @@ const Register = () => {
                   </p>
                 )}
               </div>
-              <div className="flex flex-col gap-3 ">
+              {/* <div className="flex flex-col gap-3 ">
                 <label>
                   <input
                     checked
@@ -100,7 +100,7 @@ const Register = () => {
                   />{' '}
                   I'm Instructor
                 </label>
-              </div>
+              </div> */}
               <div className="mt-6">
                 <button
                   className="btn btn-primary w-full text-lg"

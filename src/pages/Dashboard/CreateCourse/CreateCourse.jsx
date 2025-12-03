@@ -1,25 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import useAxios from '../../../hooks/useAxios';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { Editor } from '@tinymce/tinymce-react';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const CreateCourse = () => {
-  const axios = useAxios();
+  const { id } = useParams();
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [image, setImage] = useState(null);
+  const [description, setDescription] = useState('');
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
 
-  const { register, handleSubmit, control } = useForm({
+  const { register, handleSubmit, control, reset } = useForm({
     defaultValues: { syllabus: [{ topic: '', details: '' }] },
   });
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    if (id) {
+      setIsUpdate(true);
+      axiosSecure.get(`/courses/${id}`).then(res => {
+        const course = res.data.course;
+
+        setDescription(course.description);
+        setImage(course.image);
+        reset({
+          title: course.title,
+          price: course.price,
+          duration: course.duration,
+          category: course.category,
+          syllabus: course.syllabus,
+        });
+      });
+    }
+  }, [axiosSecure, id, reset]);
+
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'syllabus',
   });
-
-  const [image, setImage] = useState(null);
-  const [description, setDescription] = useState('');
 
   const handleImageUpload = async e => {
     const file = e.target.files[0];
@@ -49,17 +69,23 @@ const CreateCourse = () => {
 
   const onSubmit = async data => {
     try {
+      setIsLoading(true);
       const payload = { ...data, image, description };
-      await axios.post('/admin/create-course', payload, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      navigate('/dashboard');
-      toast.success('Course created successfully');
+
+      if (isUpdate) {
+        await axiosSecure.patch(`/admin/update-course/${id}`, payload);
+        toast.success('Course updated successfully');
+        navigate('/dashboard/manage-courses');
+      } else {
+        await axiosSecure.post('/admin/create-course', payload);
+        toast.success('Course created successfully');
+        navigate('/dashboard/manage-courses');
+      }
     } catch (err) {
       toast.error('Failed to create course');
       console.error(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -159,7 +185,7 @@ const CreateCourse = () => {
         </div>
 
         <button type="submit" className="btn btn-primary w-full mt-4">
-          Create Course
+          {isUpdate ? 'Update Course' : 'Create Course'}
         </button>
       </form>
     </div>

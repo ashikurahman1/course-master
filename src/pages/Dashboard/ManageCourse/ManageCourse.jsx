@@ -1,9 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import useAxios from '../../../hooks/useAxios';
-
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { Link } from 'react-router';
 const ManageCourse = () => {
   const axios = useAxios();
+  const axiosSecure = useAxiosSecure();
   const [selectedCourse, setSelectedCourse] = useState(null);
   const { data: courses = [], refetch } = useQuery({
     queryKey: ['courses'],
@@ -14,12 +17,43 @@ const ManageCourse = () => {
   });
 
   // Delete Functions
-  const handleDelete = (course) => {
+  const handleDelete = async course => {
+    try {
+      const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: `Do you really want to delete "${course.title}"?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+      });
 
-    try
+      // If user cancels
+      if (!result.isConfirmed) return;
 
+      // Delete API call
+      await axiosSecure.delete(`/admin/delete-course/${course._id}`);
 
-  }
+      Swal.fire({
+        title: 'Deleted!',
+        text: 'Course has been deleted successfully.',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      refetch();
+    } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Failed to delete the course.',
+        icon: 'error',
+      });
+      console.error(error);
+    }
+  };
   return (
     <div className="">
       <h2 className="text-2xl font-semibold text-center py-5">
@@ -75,7 +109,12 @@ const ManageCourse = () => {
                     >
                       View
                     </button>
-                    <button className="btn btn-sm btn-primary">Edit</button>
+                    <Link
+                      to={`/dashboard/update-course/${course._id}`}
+                      className="btn btn-sm btn-primary"
+                    >
+                      Edit
+                    </Link>
                     <button
                       onClick={() => handleDelete(course)}
                       className="btn btn-sm btn-error text-white"
