@@ -7,7 +7,7 @@ import Logo from '../../components/Logo/Logo';
 
 const menuLinks = [
   { name: 'Home', path: '/' },
-  { name: 'Course', path: '/courses' },
+  { name: 'Courses', path: '/courses' },
   { name: 'Instructors', path: '/instructors' },
   { name: 'Testimonial', path: '/testimonial' },
   { name: 'Blogs', path: '/blogs' },

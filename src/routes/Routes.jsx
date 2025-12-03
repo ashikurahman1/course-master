@@ -11,6 +11,7 @@ import ManageCourse from '../pages/Dashboard/ManageCourse/ManageCourse';
 import ManageUsers from '../pages/Dashboard/ManageUsers/ManageUsers';
 import ManageEnrollment from '../pages/Dashboard/ManageEnrollment/ManageEnrollment';
 import ReviewAssignment from '../pages/Dashboard/ReviewAssignment/ReviewAssignment';
+import Courses from '../pages/Courses/Courses';
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
       { index: true, Component: Home },
       {
         path: 'courses',
-        Component: Home,
+        Component: Courses,
       },
       {
         path: 'instructors',

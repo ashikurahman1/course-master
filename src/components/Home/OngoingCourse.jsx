@@ -83,9 +83,12 @@ const OngoingCourse = () => {
                 </div>
 
                 {/* Enroll Button */}
-                <button className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-300">
-                  Enroll Now
-                </button>
+                <Link
+                  to={`/courses/${course?._id}`}
+                  className="block text-center bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-300"
+                >
+                  View Details
+                </Link>
               </div>
             </div>
           ))}
