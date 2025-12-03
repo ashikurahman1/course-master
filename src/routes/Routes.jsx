@@ -12,6 +12,7 @@ import ManageUsers from '../pages/Dashboard/ManageUsers/ManageUsers';
 import ManageEnrollment from '../pages/Dashboard/ManageEnrollment/ManageEnrollment';
 import ReviewAssignment from '../pages/Dashboard/ReviewAssignment/ReviewAssignment';
 import Courses from '../pages/Courses/Courses';
+import CourseDetail from '../pages/CourseDetails/CourseDetails';
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: 'courses',
         Component: Courses,
+      },
+      {
+        path: 'courses/:id',
+        Component: CourseDetail,
       },
       {
         path: 'instructors',

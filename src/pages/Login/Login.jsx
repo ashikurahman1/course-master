@@ -32,7 +32,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="bg-linear-to-b from-primary/30 to-primary/10">
+    <div className="bg-linear-to-b from-primary/30 to-primary/10 min-h-screen">
       <div className="container mx-auto px-4 py-40  ">
         <section className="p-6 lg:p-10 bg-white rounded-lg shadow-lg max-w-xl mx-auto mt-5">
           <h2 className="text-3xl lg:text-4xl font-bold mb-10 text-center">

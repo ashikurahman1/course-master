@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 
 import './Navbar.css';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import Logo from '../../components/Logo/Logo';
+import useAuth from '../../hooks/useAuth';
 
 const menuLinks = [
   { name: 'Home', path: '/' },
@@ -16,13 +17,19 @@ const menuLinks = [
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
-
+  const { user } = useAuth();
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/login');
+  };
 
   const renderLinks = (className = 'menu-item') =>
     menuLinks.map(link => (
@@ -52,10 +59,16 @@ const Navbar = () => {
             <div className="hidden md:flex space-x-6">{renderLinks()}</div>
           </>
         )}
+        {user ? (
+          <button onClick={handleLogout} className="btn btn-secondary">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login" className="btn btn-primary">
+            Login
+          </Link>
+        )}
 
-        <Link to="/login" className="btn btn-primary">
-          Login
-        </Link>
         {/* Mobile Burger Menu */}
         {isMobile && <Menu right>{renderLinks()}</Menu>}
       </nav>
