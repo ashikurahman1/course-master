@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
-
 import toast from 'react-hot-toast';
 import useAxios from '../../../hooks/useAxios';
 import { useNavigate } from 'react-router';
+import { Editor } from '@tinymce/tinymce-react';
 
 const CreateCourse = () => {
   const axios = useAxios();
@@ -19,6 +19,7 @@ const CreateCourse = () => {
   });
 
   const [image, setImage] = useState(null);
+  const [description, setDescription] = useState('');
 
   const handleImageUpload = async e => {
     const file = e.target.files[0];
@@ -48,7 +49,7 @@ const CreateCourse = () => {
 
   const onSubmit = async data => {
     try {
-      const payload = { ...data, image };
+      const payload = { ...data, image, description };
       await axios.post('/admin/create-course', payload, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -73,12 +74,23 @@ const CreateCourse = () => {
           className="input w-full input-bordered"
         />
 
-        <textarea
+        {/* <textarea
           placeholder="Description"
           {...register('description', { required: true })}
           className="textarea w-full textarea-bordered"
+        /> */}
+        <Editor
+          apiKey={import.meta.env.VITE_TINNY_API}
+          value={description}
+          init={{
+            height: 300,
+            menubar: false,
+            plugins: ['lists', 'link', 'image', 'code', 'table'],
+            toolbar:
+              'undo redo | bold italic underline | bullist numlist | link image | code',
+          }}
+          onEditorChange={content => setDescription(content)}
         />
-
         <input
           type="number"
           placeholder="Price"

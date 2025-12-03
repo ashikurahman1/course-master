@@ -13,35 +13,30 @@ const testimonials = [
     batch: 'MERN Stack Web Development Career Path Batch - 3',
     feedback:
       'From this course, I gained skills in REACT, JS, and GIT. Especially my REACT skills will help a lot in my future professional life.',
-    avatar: 'https://via.placeholder.com/50', // replace with real image if available
   },
   {
     name: 'Priyabrata Chowdhury',
     batch: 'Web Development with Python, Django & React Batch - 11',
     feedback:
       'Learning programming has never been this easy! Every day I am learning new things in CSS, JavaScript, and Python. Thanks to Interactive Careers for planning this course so well.',
-    avatar: 'https://via.placeholder.com/50',
   },
   {
     name: 'Anamika Abedin',
     batch: 'UI/UX Design Career Path Batch - 2',
     feedback:
       'What I liked most about this course is the 24/7 support system. This course gave me the confidence that I can work with websites.',
-    avatar: 'https://via.placeholder.com/50',
   },
   {
     name: 'Md Jawadul Karim',
     batch: 'UI/UX Design Career Path Batch - 2',
     feedback:
       'The all-time support helped me solve any problem quickly. It will help me develop my career in UI/UX in the future.',
-    avatar: 'https://via.placeholder.com/50',
   },
   {
     name: 'Ronak Ara',
     batch: 'MERN Stack Web Development Career Path Batch - 3',
     feedback:
       'Live classes and infinite support sessions were the best for me. I started from scratch and learned HTML, CSS, and JS properly.',
-    avatar: 'https://via.placeholder.com/50',
   },
 ];
 
