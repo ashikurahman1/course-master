@@ -8,6 +8,9 @@ import DashboardLayout from '../layout/DashboardLayout';
 import MyDashboard from '../pages/Dashboard/MyDashboard/MyDashboard';
 import CreateCourse from '../pages/Dashboard/CreateCourse/CreateCourse';
 import ManageCourse from '../pages/Dashboard/ManageCourse/ManageCourse';
+import ManageUsers from '../pages/Dashboard/ManageUsers/ManageUsers';
+import ManageEnrollment from '../pages/Dashboard/ManageEnrollment/ManageEnrollment';
+import ReviewAssignment from '../pages/Dashboard/ReviewAssignment/ReviewAssignment';
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -56,9 +59,14 @@ export const router = createBrowserRouter([
         index: true,
         Component: MyDashboard,
       },
+      // Admin Route
       {
         path: 'create-course',
         Component: CreateCourse,
+      },
+      {
+        path: 'manage-users',
+        Component: ManageUsers,
       },
       {
         path: 'update-course/:id',
@@ -67,6 +75,14 @@ export const router = createBrowserRouter([
       {
         path: 'manage-courses',
         Component: ManageCourse,
+      },
+      {
+        path: 'manage-enrollment',
+        Component: ManageEnrollment,
+      },
+      {
+        path: 'review-assignment',
+        Component: ReviewAssignment,
       },
     ],
   },

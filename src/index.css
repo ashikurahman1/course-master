@@ -17,3 +17,6 @@ textarea:focus {
   border-color: #3b82f6; /* Tailwind's blue-500 */
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); /* Blue shadow */
 }
+.btn {
+  color: white;
+}

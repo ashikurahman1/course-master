@@ -7,6 +7,9 @@ import { Link } from 'react-router';
 const ManageCourse = () => {
   const axios = useAxios();
   const axiosSecure = useAxiosSecure();
+  const [batchModalCourse, setBatchModalCourse] = useState(null);
+  const [batches, setBatches] = useState([]);
+
   const [selectedCourse, setSelectedCourse] = useState(null);
   const { data: courses = [], refetch } = useQuery({
     queryKey: ['courses'],
@@ -15,6 +18,27 @@ const ManageCourse = () => {
       return res.data.courses;
     },
   });
+
+  // Define Batch
+  const openBatchModal = course => {
+    setBatchModalCourse(course);
+    setBatches(course.batches || []);
+  };
+
+  const saveBatches = async () => {
+    try {
+      await axiosSecure.patch(`/admin/update-course/${batchModalCourse._id}`, {
+        batches,
+      });
+      Swal.fire('Batches updated successfully', 'success');
+      setBatchModalCourse(null);
+      setBatches([]);
+      refetch();
+    } catch (error) {
+      console.error(error);
+      Swal.fire('Error!', 'Failed to update batches', 'error');
+    }
+  };
 
   // Delete Functions
   const handleDelete = async course => {
@@ -56,16 +80,17 @@ const ManageCourse = () => {
   };
   return (
     <div className="">
-      <h2 className="text-2xl font-semibold text-center py-5">
+      <h2 className="text-2xl font-semibold py-5">
         Total Courses: {courses.length}
       </h2>
-      <div className="overflow-x-auto ">
+      <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
             <tr>
               <th>Course Details</th>
               <th>Instructors Details</th>
+              <th>Batch Info</th>
               <th>Price</th>
               <th>Actions</th>
             </tr>
@@ -100,21 +125,42 @@ const ManageCourse = () => {
                     {course?.category}
                   </span>
                 </td>
+                <td>
+                  {course.batches?.length > 0 ? (
+                    <ul>
+                      {course.batches.map((b, i) => (
+                        <li key={i}>
+                          {b.startDate
+                            ? new Date(b.startDate).toLocaleDateString()
+                            : 'No date'}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    'No batches'
+                  )}{' '}
+                </td>
                 <td>{course?.price} Tk</td>
                 <td>
                   <div className="space-x-2 text-white flex flex-col items-center gap-2 lg:flex-row">
                     <button
                       onClick={() => setSelectedCourse(course)}
-                      className="btn btn-sm btn-success text-white"
+                      className="btn btn-sm btn-neutral "
                     >
                       View
                     </button>
                     <Link
                       to={`/dashboard/update-course/${course._id}`}
-                      className="btn btn-sm btn-primary"
+                      className="btn btn-sm btn-neutral"
                     >
                       Edit
                     </Link>
+                    <button
+                      className="btn btn-sm btn-info"
+                      onClick={() => openBatchModal(course)}
+                    >
+                      Define Batch
+                    </button>
                     <button
                       onClick={() => handleDelete(course)}
                       className="btn btn-sm btn-error text-white"
@@ -168,6 +214,86 @@ const ManageCourse = () => {
               >
                 Close
               </button>
+            </div>
+          </dialog>
+        )}
+
+        {batchModalCourse && (
+          <dialog className="modal modal-open">
+            <div className="modal-box max-w-lg w-full">
+              <h3 className="font-bold text-lg mb-4">
+                Define Batches for {batchModalCourse.title}
+              </h3>
+
+              {batches.map((batch, i) => (
+                <div key={i} className="flex flex-col gap-2 mb-2">
+                  <input
+                    type="text"
+                    placeholder="Batch Name"
+                    value={batch.name || ''}
+                    onChange={e => {
+                      const newBatches = [...batches];
+                      newBatches[i].name = e.target.value;
+                      setBatches(newBatches);
+                    }}
+                    className="input input-bordered w-full "
+                  />
+                  <input
+                    type="date"
+                    value={batch.startDate ? batch.startDate.slice(0, 10) : ''}
+                    onChange={e => {
+                      const newBatches = [...batches];
+                      newBatches[i].startDate = e.target.value;
+                      setBatches(newBatches);
+                    }}
+                    className="input input-bordered w-full"
+                  />
+                  <input
+                    type="date"
+                    value={batch.endDate ? batch.endDate.slice(0, 10) : ''}
+                    onChange={e => {
+                      const newBatches = [...batches];
+                      newBatches[i].endDate = e.target.value;
+                      setBatches(newBatches);
+                    }}
+                    className="input input-bordered w-full"
+                  />
+                  <button
+                    type="button"
+                    className="btn btn-error"
+                    onClick={() =>
+                      setBatches(batches.filter((_, index) => index !== i))
+                    }
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
+
+              <button
+                type="button"
+                className="btn w-full btn-neutral mb-2"
+                onClick={() =>
+                  setBatches([
+                    ...batches,
+                    { name: '', startDate: '', endDate: '' },
+                  ])
+                }
+              >
+                Add Batch
+              </button>
+
+              <div className="flex gap-2 mt-4">
+                <button className="btn btn-primary w-1/2" onClick={saveBatches}>
+                  Save Batches
+                </button>
+                <button
+                  className="btn btn-error w-1/2"
+                  onClick={() => setBatchModalCourse(null)}
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </dialog>
         )}

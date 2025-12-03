@@ -4,8 +4,9 @@ import { IoMdHome } from 'react-icons/io';
 import { IoLogOut, IoSettingsSharp } from 'react-icons/io5';
 import { MdQuiz } from 'react-icons/md';
 import { Link, Outlet, useNavigate } from 'react-router';
-import { PiNotePencilFill } from 'react-icons/pi';
-import { Toaster } from 'react-hot-toast';
+import { PiNotePencilFill, PiStudent } from 'react-icons/pi';
+import toast, { Toaster } from 'react-hot-toast';
+
 const DashboardLayout = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
@@ -79,14 +80,15 @@ const DashboardLayout = () => {
               <ul className="menu w-full grow py-15 text-lg text-primary space-y-4">
                 {/* List item */}
                 <li className="">
-                  <button
+                  <Link
+                    to="/dashboard"
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                     data-tip="My Dashboard"
                   >
                     {/* Home icon */}
                     <IoMdHome size={20} />
                     <span className="is-drawer-close:hidden">My Dashboard</span>
-                  </button>
+                  </Link>
                 </li>
 
                 {/* Student related routes*/}
@@ -134,7 +136,8 @@ const DashboardLayout = () => {
                 {user?.role === 'admin' && (
                   <>
                     <li>
-                      <button
+                      <Link
+                        to="/dashboard/manage-users"
                         className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                         data-tip="Manage users"
                       >
@@ -143,7 +146,20 @@ const DashboardLayout = () => {
                         <span className="is-drawer-close:hidden">
                           Manage users
                         </span>
-                      </button>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/dashboard/manage-enrollment"
+                        className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                        data-tip="Manage Enrollment"
+                      >
+                        {/* Settings icon */}
+                        <PiStudent size={18} />
+                        <span className="is-drawer-close:hidden">
+                          Manage Enrollment
+                        </span>
+                      </Link>
                     </li>
                   </>
                 )}
@@ -178,7 +194,8 @@ const DashboardLayout = () => {
                       </Link>
                     </li>
                     <li>
-                      <button
+                      <Link
+                        to="/dashboard/review-assignment"
                         className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                         data-tip="Review Assignment "
                       >
@@ -187,7 +204,7 @@ const DashboardLayout = () => {
                         <span className="is-drawer-close:hidden">
                           Review Assignment{' '}
                         </span>
-                      </button>
+                      </Link>
                     </li>
                   </>
                 )}
@@ -195,6 +212,7 @@ const DashboardLayout = () => {
                 {/* List item */}
                 <li>
                   <button
+                    onClick={() => toast.error('We are working it...')}
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                     data-tip="My Profile"
                   >
