@@ -151,7 +151,8 @@ const DashboardLayout = () => {
                 {(user?.role === 'admin' || user?.role === 'instructor') && (
                   <>
                     <li>
-                      <button
+                      <Link
+                        to="/dashboard/manage-courses"
                         className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                         data-tip="Manage Courses"
                       >
@@ -160,7 +161,7 @@ const DashboardLayout = () => {
                         <span className="is-drawer-close:hidden">
                           Manage Courses
                         </span>
-                      </button>
+                      </Link>
                     </li>
                     <li>
                       <Link
@@ -179,7 +180,7 @@ const DashboardLayout = () => {
                     <li>
                       <button
                         className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                        data-tip="Create Course"
+                        data-tip="Review Assignment "
                       >
                         {/* Settings icon */}
                         <PiNotePencilFill size={18} />

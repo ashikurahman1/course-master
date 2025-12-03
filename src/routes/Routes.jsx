@@ -7,6 +7,7 @@ import { PrivateRoute } from './PrivateRoute';
 import DashboardLayout from '../layout/DashboardLayout';
 import MyDashboard from '../pages/Dashboard/MyDashboard/MyDashboard';
 import CreateCourse from '../pages/Dashboard/CreateCourse/CreateCourse';
+import ManageCourse from '../pages/Dashboard/ManageCourse/ManageCourse';
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
       {
         path: 'create-course',
         Component: CreateCourse,
+      },
+      {
+        path: 'manage-courses',
+        Component: ManageCourse,
       },
     ],
   },
