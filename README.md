@@ -26,7 +26,7 @@ anywhere. It is designed for students, instructors, and lifelong learners.
 
 ## Screenshots
 
-_(Optional: Add screenshots here for better visual representation)_
+![CourseMaster Screenshot](https://raw.githubusercontent.com/ashikurahman1/course-master/refs/heads/main/public/course-master-black.vercel.app_.png)
 
 ---
 
