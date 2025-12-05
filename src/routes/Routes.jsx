@@ -9,11 +9,13 @@ import MyDashboard from '../pages/Dashboard/MyDashboard/MyDashboard';
 import CreateCourse from '../pages/Dashboard/CreateCourse/CreateCourse';
 import ManageCourse from '../pages/Dashboard/ManageCourse/ManageCourse';
 import ManageUsers from '../pages/Dashboard/ManageUsers/ManageUsers';
-import ManageEnrollment from '../pages/Dashboard/ManageEnrollment/ManageEnrollment';
 import ReviewAssignment from '../pages/Dashboard/ReviewAssignment/ReviewAssignment';
 import Courses from '../pages/Courses/Courses';
 import CourseDetail from '../pages/CourseDetails/CourseDetails';
 import CourseConsump from '../pages/Dashboard/CourseConsu/CourseConsump';
+import Assignment from '../pages/Dashboard/Student/Assignment/Assignment';
+import Quiz from '../pages/Dashboard/Student/Quiz/Quiz';
+import EnrollmentManage from '../pages/Dashboard/EnrollmentManage/EnrollmentManage';
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -85,7 +87,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'manage-enrollment',
-        Component: ManageEnrollment,
+        Component: EnrollmentManage,
       },
       {
         path: 'review-assignment',
@@ -95,6 +97,14 @@ export const router = createBrowserRouter([
       {
         path: 'course-consumption/:courseId',
         Component: CourseConsump,
+      },
+      {
+        path: 'course/:courseId/module/:moduleId/assignment',
+        Component: Assignment,
+      },
+      {
+        path: 'course-consumption/:courseId/module/:moduleId/quiz',
+        Component: Quiz,
       },
     ],
   },

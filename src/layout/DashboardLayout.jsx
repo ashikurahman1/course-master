@@ -91,35 +91,6 @@ const DashboardLayout = () => {
                   </Link>
                 </li>
 
-                {/* Student related routes*/}
-                {user?.role === 'student' && (
-                  <>
-                    <li>
-                      <button
-                        className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                        data-tip="Assignment"
-                      >
-                        {/* Settings icon */}
-                        <FaPen size={18} />
-                        <span className="is-drawer-close:hidden">
-                          Assignment
-                        </span>
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                        data-tip="Quiz"
-                      >
-                        {/* Settings icon */}
-                        <MdQuiz size={20} />
-
-                        <span className="is-drawer-close:hidden">Quiz</span>
-                      </button>
-                    </li>
-                  </>
-                )}
-
                 {/* Only admins */}
                 {user?.role === 'admin' && (
                   <>
@@ -146,6 +117,19 @@ const DashboardLayout = () => {
                         <PiStudent size={18} />
                         <span className="is-drawer-close:hidden">
                           Manage Enrollment
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/dashboard/review-assignment"
+                        className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                        data-tip="Assignment Review"
+                      >
+                        {/* Settings icon */}
+                        <PiNotePencilFill size={18} />
+                        <span className="is-drawer-close:hidden">
+                          Assignment Review
                         </span>
                       </Link>
                     </li>
@@ -178,19 +162,6 @@ const DashboardLayout = () => {
                         <FaBookOpen size={18} />
                         <span className="is-drawer-close:hidden">
                           Create Course{' '}
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/dashboard/review-assignment"
-                        className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                        data-tip="Review Assignment "
-                      >
-                        {/* Settings icon */}
-                        <PiNotePencilFill size={18} />
-                        <span className="is-drawer-close:hidden">
-                          Review Assignment{' '}
                         </span>
                       </Link>
                     </li>

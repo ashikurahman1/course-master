@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
-const ReviewAssignment = () => {
+const EnrollmentManage = () => {
   const axiosSecure = useAxiosSecure();
 
-  const [studentFilter, setStudentFilter] = useState('');
   const [courseFilter, setCourseFilter] = useState('');
   const [batchFilter, setBatchFilter] = useState('');
 
-  // Fetch courses for filter dropdown
+  // Fetch courses for dropdown
   const { data: courses = [] } = useQuery({
     queryKey: ['courses'],
     queryFn: async () => {
@@ -18,46 +17,35 @@ const ReviewAssignment = () => {
     },
   });
 
-  // Fetch assignment submissions
+  // Fetch enrollments with filters
   const {
-    data: submissions = [],
+    data: enrollments = [],
     isFetching,
     refetch,
   } = useQuery({
-    queryKey: ['submissions', studentFilter, courseFilter, batchFilter],
+    queryKey: ['enrollments', courseFilter, batchFilter],
     queryFn: async () => {
       const params = {};
-      if (studentFilter) params.student = studentFilter;
       if (courseFilter) params.courseId = courseFilter;
       if (batchFilter) params.batch = batchFilter;
 
-      const res = await axiosSecure.get('/admin/assignments/submissions', {
-        params,
-      });
-      return res.data.submissions || [];
+      const res = await axiosSecure.get('/admin/enrollments', { params });
+      return res.data.enrollments || [];
     },
     keepPreviousData: true,
   });
 
-  // Refetch on filter change
+  // Refetch automatically when filters change
   React.useEffect(() => {
     refetch();
-  }, [studentFilter, courseFilter, batchFilter]);
+  }, [courseFilter, batchFilter]);
 
   return (
     <div className="p-5">
-      <h2 className="text-2xl font-semibold mb-5">Review Assignments</h2>
+      <h2 className="text-2xl font-semibold mb-5">Enrollment Management</h2>
 
       {/* Filters */}
       <div className="flex gap-3 mb-5">
-        <input
-          type="text"
-          placeholder="Student Name or Email"
-          className="input input-bordered"
-          value={studentFilter}
-          onChange={e => setStudentFilter(e.target.value)}
-        />
-
         <select
           className="select select-bordered"
           value={courseFilter}
@@ -78,6 +66,10 @@ const ReviewAssignment = () => {
           value={batchFilter}
           onChange={e => setBatchFilter(e.target.value)}
         />
+
+        <button className="btn btn-primary" onClick={() => refetch()}>
+          Filter
+        </button>
       </div>
 
       {/* Table */}
@@ -90,44 +82,29 @@ const ReviewAssignment = () => {
               <th>Email</th>
               <th>Course</th>
               <th>Batch</th>
-              <th>Assignment Title</th>
-              <th>Submitted At</th>
-              <th>Answer / Link</th>
             </tr>
           </thead>
           <tbody>
             {isFetching ? (
               <tr>
-                <td colSpan="8" className="text-center">
+                <td colSpan="5" className="text-center">
                   Loading...
                 </td>
               </tr>
-            ) : submissions.length > 0 ? (
-              submissions.map((sub, i) => (
-                <tr key={sub._id}>
+            ) : enrollments.length > 0 ? (
+              enrollments.map((enroll, i) => (
+                <tr key={enroll._id}>
                   <th>{i + 1}</th>
-                  <td>{sub.student?.name}</td>
-                  <td>{sub.student?.email}</td>
-                  <td>{sub.course?.title}</td>
-                  <td>{sub.batch || '-'}</td>
-                  <td>{sub.assignment?.title}</td>
-                  <td>{new Date(sub.submittedAt).toLocaleString()}</td>
-                  <td>
-                    <a
-                      href={sub.answer}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-500 underline"
-                    >
-                      View
-                    </a>
-                  </td>
+                  <td>{enroll.student?.name}</td>
+                  <td>{enroll.student?.email}</td>
+                  <td>{enroll.course?.title}</td>
+                  <td>{enroll.batch || '-'}</td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="8" className="text-center">
-                  No submissions found
+                <td colSpan="5" className="text-center">
+                  No enrollments found
                 </td>
               </tr>
             )}
@@ -138,4 +115,4 @@ const ReviewAssignment = () => {
   );
 };
 
-export default ReviewAssignment;
+export default EnrollmentManage;

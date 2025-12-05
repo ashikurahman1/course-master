@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import Swal from 'sweetalert2';
 const CourseConsump = () => {
   const { courseId } = useParams();
@@ -79,19 +79,36 @@ const CourseConsump = () => {
               allowFullScreen
             />
           </div>
-          <button
-            disabled={enrollment?.completedModules?.includes(module._id)}
-            className={`btn ${
-              enrollment?.completedModules?.includes(module._id)
-                ? 'bg-green-500'
-                : 'bg-blue-500'
-            }`}
-            onClick={() => handleMarkComplete(module._id)}
-          >
-            {enrollment?.completedModules?.includes(module._id)
-              ? 'Completed'
-              : 'Mark as Completed'}
-          </button>
+          <div className="flex btn-xs flex-wrap gap-3 items-center justify-center ">
+            <button
+              disabled={enrollment?.completedModules?.includes(module._id)}
+              className={`btn ${
+                enrollment?.completedModules?.includes(module._id)
+                  ? 'bg-green-500'
+                  : 'bg-blue-500'
+              }`}
+              onClick={() => handleMarkComplete(module._id)}
+            >
+              {enrollment?.completedModules?.includes(module._id)
+                ? 'Completed'
+                : 'Mark as Completed'}
+            </button>
+            <Link
+              to={`/dashboard/course/${courseId}/module/${module._id}/assignment`}
+              className="btn btn-primary"
+            >
+              Submit Assignment
+            </Link>
+            <Link
+              className="btn bg-yellow-500"
+              to={`/dashboard/course-consumption/${courseId}/module/${module._id}/quiz`}
+              disabled={enrollment.quizzes?.some(q => q.module === module._id)}
+            >
+              {enrollment.quizzes?.some(q => q.module === module._id)
+                ? 'Quiz Submitted'
+                : 'Take Quiz'}
+            </Link>
+          </div>
         </div>
       ))}
     </div>
