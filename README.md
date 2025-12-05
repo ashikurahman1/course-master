@@ -5,8 +5,10 @@
 ## Screenshots
 
 ![CourseMaster Screenshot](https://raw.githubusercontent.com/ashikurahman1/course-master/refs/heads/main/public/course-master-black.vercel.app_.png)
-
-[Live Demo](https://course-master-black.vercel.app/)
+![CourseMaster Dashboard](https://raw.githubusercontent.com/ashikurahman1/course-master/refs/heads/main/public/course-master-black.vercel.app_dashboard.png)
+**Live Client:** [CourseMaster Live](https://course-master-black.vercel.app)
+**Server Repo:**
+[CourseMaster Server Repo](https://github.com/ashikurahman1/course-master-server)
 
 Course Master is a modern online learning platform that allows students to
 explore thousands of courses, track their progress, and gain new skills anytime,
