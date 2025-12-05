@@ -1,5 +1,11 @@
 # Course Master
 
+---
+
+## Screenshots
+
+![CourseMaster Screenshot](https://raw.githubusercontent.com/ashikurahman1/course-master/refs/heads/main/public/course-master-black.vercel.app_.png)
+
 [Live Demo](https://course-master-black.vercel.app/)
 
 Course Master is a modern online learning platform that allows students to
@@ -21,12 +27,6 @@ anywhere. It is designed for students, instructors, and lifelong learners.
 - Realtime notifications using React Hot Toast.
 - Pagination, filtering, and search functionality for courses.
 - Secure authentication and role-based access control.
-
----
-
-## Screenshots
-
-![CourseMaster Screenshot](https://raw.githubusercontent.com/ashikurahman1/course-master/refs/heads/main/public/course-master-black.vercel.app_.png)
 
 ---
 
