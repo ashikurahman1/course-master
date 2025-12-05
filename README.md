@@ -1,155 +1,107 @@
-# CourseMaster — Full-Featured MERN E-Learning Platform
+# Course Master
 
-CourseMaster is a modern, scalable, and production-ready **E-learning platform**
-built using the **MERN stack**.  
-The goal of this project is to simulate a real-world EdTech application that
-supports thousands of students, instructors, and administrators — while ensuring
-performance, clarity, and maintainability.
+[Live Demo](https://course-master-black.vercel.app/)
 
-This project includes a complete **authentication system**, **course management
-module**, **enrollment flow**, **student dashboard**, **admin dashboard**, and
-**course consumption features** such as progress tracking, assignments, and
-quizzes.
+Course Master is a modern online learning platform that allows students to
+explore thousands of courses, track their progress, and gain new skills anytime,
+anywhere. It is designed for students, instructors, and lifelong learners.
 
 ---
 
-## 1. Project Overview
+## Features
 
-CourseMaster enables:
-
-### **Students**
-
-- Browse, search, filter, and sort courses
-- View course details
-- Enroll in courses
-- Access a student dashboard
-- Watch lessons & track progress
-- Submit assignments
-- Take quizzes with instant scoring
-
-### **Administrators**
-
-- Manage courses (Create, Read, Update, Delete)
-- Create and manage batches
-- Manage enrollments
-- Review student assignments
-
-The platform is designed with **clean architecture**, **secure APIs**,
-**optimized queries**, and **scalable data models**, reflecting real-world
-EdTech requirements.
+- Browse and enroll in a wide variety of courses.
+- Track learning progress and completed lessons.
+- Admin dashboard for managing courses, students, and instructors.
+- Instructor dashboard for managing their own courses.
+- Responsive and modern UI built with Tailwind CSS and DaisyUI.
+- Interactive components with animations using Framer Motion and AOS.
+- Full-featured forms powered by React Hook Form and validations.
+- TinyMCE integration for rich text editing.
+- Realtime notifications using React Hot Toast.
+- Pagination, filtering, and search functionality for courses.
+- Secure authentication and role-based access control.
 
 ---
 
-## 2. Technology Stack (Mandatory)
+## Screenshots
 
-### **Frontend**
-
-- React.js
-- Context API
-- Axios / Fetch API
-- TailwindCSS
-
-### **Backend**
-
-- Node.js
-- Express.js
-- JWT Authentication
-- Bcrypt for password hashing
-
-### **Database**
-
-- MongoDB
-- Mongoose ODM
+_(Optional: Add screenshots here for better visual representation)_
 
 ---
 
-## 3. Key Functional Requirements
+## Tech Stack
 
-### A. Authentication & Authorization
-
-#### **Student**
-
-- Register, Login, Logout
-- JWT-based authentication
-- Hashed passwords (bcrypt)
-
-#### **Admin**
-
-- Separate login
-- Can use seeder or secret registration key
-- Access protected admin-only routes
-
-#### **Security**
-
-- JWT tokens
-- Protected APIs
-- Role-based access control
-- No access to dashboard without authentication
+- **Frontend:** React, Vite, Tailwind CSS, DaisyUI, Framer Motion
+- **State & Data Fetching:** React Query, Axios
+- **Routing:** React Router
+- **Forms & Validation:** React Hook Form
+- **UI Components:** DaisyUI, Swiper.js, React Icons
+- **Editor:** TinyMCE React
+- **Notifications:** React Hot Toast, SweetAlert2
+- **Firebase:** Authentication & storage integration
 
 ---
 
-## B. Public Pages (Unprotected)
+## Installation
 
-### **1. Home / Course Listing**
+1. Clone the repository:
 
-- Display all available courses
-- **Server-Side Pagination**
-- **Search**
-- **Sorting**
-- **Filtering**
+```bash
+git clone https://github.com/ashikurahman1/course-master.git
+cd course-master
+```
 
-### **2. Course Details**
+2. Install dependencies:
 
-- Full course information
-- “Enroll Now” button
-- If logged in → Enroll
-- If not logged in → Redirect to login
+```bash
+npm install
+```
 
----
+2. Install dependencies:
 
-## C. Student Features (Protected)
+```bash
+npm install
+```
 
-### **1. Student Dashboard**
+3. Create a .env file in the root and add your environment variables:
 
-- Display enrolled courses
-- Show course progress
+```bash
+  IMGBB_API_KEY
+  TINNY_API=
+```
 
-### **2. Course Player / Consumption**
+4. Start the development server:
 
-- Play embedded videos
-- Mark lessons as completed
-- Dynamic progress bar updates
+```bash
+ npm run dev
+```
 
-### **3. Assignments & Quizzes**
+## Dependencies
 
-#### **Assignments**
+-- Runtime Dependencies
 
-- Submit a Google Drive link or text-based answer
+```bash
+{
+  "@tailwindcss/vite": "^4.1.17",
+  "@tanstack/react-query": "^5.90.11",
+  "@tinymce/tinymce-react": "^6.3.0",
+  "axios": "^1.13.2",
+  "daisyui": "^5.5.5",
+  "firebase": "^12.6.0",
+  "framer-motion": "^12.23.25",
+  "react": "^19.2.0",
+  "react-burger-menu": "^3.1.0",
+  "react-countup": "^6.5.3",
+  "react-dom": "^19.2.0",
+  "react-fast-marquee": "^1.6.5",
+  "react-hook-form": "^7.67.0",
+  "react-hot-toast": "^2.6.0",
+  "react-icons": "^5.5.0",
+  "react-router": "^7.9.6",
+  "sweetalert2": "^11.26.3",
+  "swiper": "^12.0.3",
+  "tailwindcss": "^4.1.17"
+}
 
-#### **Quizzes**
-
-- Multiple-choice quiz per module
-- Score displayed immediately after submit
-
----
-
-## D. Admin Features (Protected)
-
-### **1. Course Management**
-
-- CRUD operations
-- Upload syllabus
-- Add video links
-- Add tags & categories
-- Create “Batches”
-
-### **2. Enrollment Management**
-
-- View all students enrolled in a course or batch
-
-### **3. Assignment Review**
-
-- View student-submitted assignments
-- Review and update status
-
----
+```
