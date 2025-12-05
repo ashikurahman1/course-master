@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
-
 import { Link } from 'react-router';
 import useAxios from '../../hooks/useAxios';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import Loader from '../Loader/Loader';
 
 const OngoingCourse = () => {
   const axios = useAxios();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -24,16 +31,16 @@ const OngoingCourse = () => {
   }, [axios]);
 
   if (loading) {
-    return (
-      <div className="container mx-auto p-10">
-        <p className="text-xl font-semibold">Loading courses...</p>
-      </div>
-    );
+    return <Loader />;
   }
+
   return (
-    <div className="">
-      <section className="container mx-auto px-4 mb-20 pt-15 pb-15 shadow rounded-md p-10">
-        <div className="">
+    <div>
+      <section
+        className="container mx-auto px-4 mb-20 pt-15 pb-15 shadow rounded-md p-10"
+        data-aos="fade-up"
+      >
+        <div>
           <h2 className="text-3xl font-semibold md:text-5xl mb-12">
             Ongoing Courses
           </h2>
@@ -41,10 +48,12 @@ const OngoingCourse = () => {
 
         {/* Card */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
-          {courses.map(course => (
+          {courses.map((course, index) => (
             <div
               key={course?._id}
               className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+              data-aos="zoom-in"
+              data-aos-delay={index * 100} // Stagger animation
             >
               <img
                 src={course?.image}
@@ -93,10 +102,13 @@ const OngoingCourse = () => {
             </div>
           ))}
         </div>
+
         <div className="flex justify-center mt-10">
           <Link
             className="bg-primary/10 text-primary rounded-md shadow-md flex items-center font-semibold p-4 justify-center hover:bg-primary/20 transition-all duration-150 mt-4"
             to="/courses"
+            data-aos="fade-up"
+            data-aos-delay={courses.length * 100}
           >
             View All Courses{' '}
             <span className="ml-2">

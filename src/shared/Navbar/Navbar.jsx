@@ -10,7 +10,7 @@ const menuLinks = [
   { name: 'Home', path: '/' },
   { name: 'Courses', path: '/courses' },
   { name: 'Instructors', path: '/instructors' },
-  { name: 'Testimonial', path: '/testimonial' },
+
   { name: 'Blogs', path: '/blogs' },
   { name: 'Contact Us', path: '/contact' },
 ];

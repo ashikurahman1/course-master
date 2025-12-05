@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   FaDollarSign,
   FaChalkboardTeacher,
@@ -10,6 +10,8 @@ import {
   FaUserGraduate,
   FaBuilding,
 } from 'react-icons/fa';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const reasons = [
   {
@@ -61,13 +63,24 @@ const reasons = [
 ];
 
 const WhyChooseUs = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   return (
     <section className="py-30 px-4 bg-gray-50">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl md:text-5xl font-bold  mb-5">
+        <h2
+          className="text-3xl md:text-5xl font-bold mb-5"
+          data-aos="fade-down"
+        >
           Why Choose <span className="text-primary">Us?</span>
         </h2>
-        <p className="text-gray-700 mb-12 max-w-2xl mx-auto">
+        <p
+          className="text-gray-700 mb-12 max-w-2xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           Course Master is more than just a skill development platform. It is
           your complete gateway from learning to job placement, with expert
           guidance at every step.
@@ -77,7 +90,9 @@ const WhyChooseUs = () => {
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-md p-6 flex  flex-col items-center gap-4 hover:shadow-lg transition-shadow duration-300"
+              className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center gap-4 hover:shadow-lg transition-shadow duration-300"
+              data-aos="zoom-in"
+              data-aos-delay={index * 100}
             >
               <div>{reason.icon}</div>
               <div>

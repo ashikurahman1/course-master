@@ -16,6 +16,9 @@ import CourseConsump from '../pages/Dashboard/CourseConsu/CourseConsump';
 import Assignment from '../pages/Dashboard/Student/Assignment/Assignment';
 import Quiz from '../pages/Dashboard/Student/Quiz/Quiz';
 import EnrollmentManage from '../pages/Dashboard/EnrollmentManage/EnrollmentManage';
+import Instructor from '../pages/Instructor/Instructor';
+import Blogs from '../pages/Blogs/Blogs';
+import ContactUs from '../pages/ContactUs/ContactUs';
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -32,19 +35,16 @@ export const router = createBrowserRouter([
       },
       {
         path: 'instructors',
-        Component: Home,
+        Component: Instructor,
       },
-      {
-        path: 'testimonial',
-        Component: Home,
-      },
+
       {
         path: 'blogs',
-        Component: Home,
+        Component: Blogs,
       },
       {
         path: 'contact',
-        Component: Home,
+        Component: ContactUs,
       },
       {
         path: 'register',
