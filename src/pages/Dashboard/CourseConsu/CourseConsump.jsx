@@ -8,6 +8,7 @@ const CourseConsump = () => {
   const [course, setCourse] = useState(null);
   const [enrollment, setEnrollment] = useState(null);
   const [loading, setLoading] = useState(true);
+  console.log(courseId);
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -16,7 +17,12 @@ const CourseConsump = () => {
           `/student/courses/${courseId}/consumption`
         );
         setCourse(res.data.course);
-        setEnrollment(res.data.enrollment);
+        const enrollData = res.data.enrollment || {};
+        setEnrollment({
+          ...enrollData,
+          completedModules: enrollData.completedModules || [],
+          progress: enrollData.progress || 0,
+        });
       } catch (err) {
         console.log(err);
       } finally {
@@ -36,6 +42,7 @@ const CourseConsump = () => {
         progress: res.data.progress,
         completedModules: [...prev.completedModules, moduleId],
       }));
+
       Swal.fire('Success', 'Module marked completed!', 'success');
     } catch (err) {
       Swal.fire(
@@ -48,6 +55,7 @@ const CourseConsump = () => {
 
   if (loading) return <div>Loading...</div>;
   if (!course) return <div>Course not found</div>;
+  if (!enrollment) return <div>Loading enrollment...</div>;
   return (
     <div className="p-5">
       <h2 className="text-2xl font-bold mb-4">{course.title}</h2>
@@ -72,15 +80,15 @@ const CourseConsump = () => {
             />
           </div>
           <button
-            disabled={enrollment.completedModules.includes(module._id)}
+            disabled={enrollment?.completedModules?.includes(module._id)}
             className={`btn ${
-              enrollment.completedModules.includes(module._id)
+              enrollment?.completedModules?.includes(module._id)
                 ? 'bg-green-500'
                 : 'bg-blue-500'
             }`}
             onClick={() => handleMarkComplete(module._id)}
           >
-            {enrollment.completedModules.includes(module._id)
+            {enrollment?.completedModules?.includes(module._id)
               ? 'Completed'
               : 'Mark as Completed'}
           </button>

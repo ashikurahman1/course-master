@@ -47,6 +47,9 @@ const Navbar = () => {
         {link.name}
       </NavLink>
     ));
+  <button onClick={handleLogout} className="btn btn-secondary">
+    Logout
+  </button>;
 
   return (
     <header className="bg-white shadow-md fixed w-full z-100 ">
@@ -56,26 +59,60 @@ const Navbar = () => {
         {/* Desktop Menu */}
         {!isMobile && (
           <>
-            <div className="hidden md:flex space-x-6">{renderLinks()}</div>
+            <div className="hidden md:flex space-x-6 items-center">
+              {renderLinks()}
+              {user ? (
+                <>
+                  <Link to="/dashboard" className="btn btn-primary">
+                    My Dashboard
+                  </Link>
+                  <button onClick={handleLogout} className="btn btn-secondary">
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link to="/login" className="btn btn-primary">
+                  Login
+                </Link>
+              )}
+            </div>
           </>
         )}
-        {user ? (
-          <div className="flex gap-2">
-            <Link to="/dashboard" className="btn btn-primary">
-              My Dashboard
-            </Link>
-            <button onClick={handleLogout} className="btn btn-secondary">
-              Logout
-            </button>
-          </div>
-        ) : (
-          <Link to="/login" className="btn btn-primary">
-            Login
-          </Link>
+        {isMobile && (
+          <>
+            {user ? (
+              <Link to="/dashboard" className="btn btn-primary">
+                Dashboard
+              </Link>
+            ) : (
+              <Link to="/login" className="btn btn-primary">
+                Login
+              </Link>
+            )}
+          </>
         )}
-
         {/* Mobile Burger Menu */}
-        {isMobile && <Menu right>{renderLinks()}</Menu>}
+        {isMobile && (
+          <Menu right>
+            {renderLinks()}
+            <div className="mt-4 flex flex-col gap-3">
+              {user ? (
+                <>
+                  <button
+                    onClick={handleLogout}
+                    className="menu-item text-red-600 mt-10 btn btn-error w-full"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link to="/login" className="menu-item">
+                  Login
+                </Link>
+              )}
+            </div>
+          </Menu>
+        )}
       </nav>
     </header>
   );

@@ -22,6 +22,7 @@ const MyDashboard = () => {
       try {
         if (user.role === 'student') {
           const res = await axiosSecure.get('/student/my-courses');
+
           setStudentCourses(res.data);
         } else if (user.role === 'admin') {
           const res = await axiosSecure.get('/admin/dashboard');
@@ -55,16 +56,16 @@ const MyDashboard = () => {
           {studentCourses.length === 0 ? (
             <p>No courses enrolled yet.</p>
           ) : (
-            studentCourses.map(course => (
+            studentCourses.map(enrollment => (
               <Link
-                to={`/dashboard/course-consumption/${course._id}`}
-                key={course._id}
+                to={`/dashboard/course-consumption/${enrollment.course._id}`}
+                key={enrollment._id}
                 className="mb-4 p-5 rounded-lg shadow-md bg-white border border-gray-200 hover:shadow-lg transition flex flex-col md:flex-row items-center gap-4"
               >
                 {/* Course Image */}
                 <img
-                  src={course.course.image}
-                  alt={course.course.title}
+                  src={enrollment.course.image}
+                  alt={enrollment.course.title}
                   className="w-full md:w-40 h-28 object-cover rounded-lg shadow-sm"
                 />
 
@@ -72,37 +73,41 @@ const MyDashboard = () => {
                 <div className="flex-1 w-full">
                   <div className="flex justify-between items-center mb-2">
                     <h4 className="text-lg md:text-xl font-semibold text-gray-800">
-                      {course.course.title}
+                      {enrollment.course.title}
                     </h4>
                     <span
                       className={`text-sm font-medium px-2 py-1 rounded ${
-                        course.progress >= 100
+                        enrollment.progress >= 100
                           ? 'bg-green-100 text-green-800'
                           : 'bg-blue-100 text-blue-800'
                       }`}
                     >
-                      {Math.min(course.progress, 100)}% Completed
+                      {Math.min(enrollment.progress, 100)}% Completed
                     </span>
                   </div>
 
                   <p className="text-gray-700 font-medium mb-2">
                     Price:{' '}
                     <span className="text-primary font-bold">
-                      {course.course.price} Tk
+                      {enrollment.course.price} Tk
                     </span>
                   </p>
 
                   <div className="w-full bg-gray-200 rounded-full h-4 mb-2">
                     <div
                       className={`h-4 rounded-full ${
-                        course.progress >= 100 ? 'bg-green-500' : 'bg-blue-500'
+                        enrollment.progress >= 100
+                          ? 'bg-green-500'
+                          : 'bg-blue-500'
                       }`}
-                      style={{ width: `${Math.min(course.progress, 100)}%` }}
+                      style={{
+                        width: `${Math.min(enrollment.progress, 100)}%`,
+                      }}
                     ></div>
                   </div>
 
                   <p className="text-gray-500 mt-1">
-                    {course.progress >= 100
+                    {enrollment.progress >= 100
                       ? 'Course Completed! '
                       : 'Keep going to complete the course.'}
                   </p>
