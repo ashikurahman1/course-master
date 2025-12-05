@@ -44,57 +44,60 @@ const Testimonial = () => {
   return (
     <section className="bg-indigo-50 py-30 px-4">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-semibold md:text-5xl mb-5">
-          What Our Successful <span className="text-primary">Learners Say</span>
-        </h2>
-        <p className="text-gray-700 mb-15 max-w-2xl mx-auto">
-          Discover the real-life experiences of our learners that have
-          transformed their careers!
-        </p>
+        <div className="overflow-hidden">
+          <h2 className="text-3xl font-semibold md:text-5xl mb-5">
+            What Our Successful{' '}
+            <span className="text-primary">Learners Say</span>
+          </h2>
+          <p className="text-gray-700 mb-15 max-w-2xl mx-auto">
+            Discover the real-life experiences of our learners that have
+            transformed their careers!
+          </p>
 
-        <Swiper
-          effect={'coverflow'}
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={'auto'}
-          coverflowEffect={{
-            rotate: 60,
-            stretch: 100,
-            depth: 150,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          // pagination={{ clickable: true }}
-          modules={[EffectCoverflow, Pagination, Autoplay]}
-          className="mySwiper"
-        >
-          {testimonials.map((t, index) => (
-            <SwiperSlide
-              key={index}
-              className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center justify-center max-w-sm mx-auto"
-            >
-              <img
-                src={t.avatar}
-                alt={t.name}
-                className="w-16 h-16 rounded-full mb-4"
-              />
-              <div className=" ">
-                <p className="flex p-2 mb-4 text-lg md:text-xl text-center">
-                  <span className="text-primary">
-                    <FaQuoteLeft size={30} />
-                  </span>{' '}
-                  {t.feedback}
-                </p>
-              </div>
+          <Swiper
+            effect={'coverflow'}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={'auto'}
+            coverflowEffect={{
+              rotate: 60,
+              stretch: 100,
+              depth: 150,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            // pagination={{ clickable: true }}
+            modules={[EffectCoverflow, Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            {testimonials.map((t, index) => (
+              <SwiperSlide
+                key={index}
+                className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center justify-center max-w-sm mx-auto"
+              >
+                <img
+                  src={t.avatar}
+                  alt={t.name}
+                  className="w-16 h-16 rounded-full mb-4"
+                />
+                <div className=" ">
+                  <p className="flex p-2 mb-4 text-lg md:text-xl text-center">
+                    <span className="text-primary">
+                      <FaQuoteLeft size={30} />
+                    </span>{' '}
+                    {t.feedback}
+                  </p>
+                </div>
 
-              <h4 className="text-indigo-600 font-semibold text-lg md:text-xl">
-                {t.name}
-              </h4>
-              <p className="text-gray-500 text-sm md:text-base">{t.batch}</p>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                <h4 className="text-indigo-600 font-semibold text-lg md:text-xl">
+                  {t.name}
+                </h4>
+                <p className="text-gray-500 text-sm md:text-base">{t.batch}</p>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </section>
   );

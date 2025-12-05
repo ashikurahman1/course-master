@@ -55,7 +55,7 @@ const blogs = [
 
 const Blogs = () => {
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    AOS.init({ duration: 800, once: true, offset: 50 });
   }, []);
 
   return (

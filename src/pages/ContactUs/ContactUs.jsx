@@ -4,7 +4,7 @@ import 'aos/dist/aos.css';
 
 const ContactUs = () => {
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    AOS.init({ duration: 800, once: true, offset: 50 });
   }, []);
 
   return (

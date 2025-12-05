@@ -52,8 +52,8 @@ const Navbar = () => {
   </button>;
 
   return (
-    <header className="bg-white shadow-md fixed w-full z-100 ">
-      <nav className="container mx-auto flex justify-between items-center p-4">
+    <header className="bg-white shadow-md fixed w-full z-50">
+      <nav className="container mx-auto flex justify-between items-center p-4 relative">
         <Logo />
 
         {/* Desktop Menu */}
@@ -106,7 +106,7 @@ const Navbar = () => {
                   </button>
                 </>
               ) : (
-                <Link to="/login" className="menu-item">
+                <Link to="/login" className="btn btn-primary">
                   Login
                 </Link>
               )}

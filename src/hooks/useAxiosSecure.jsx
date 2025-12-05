@@ -4,8 +4,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 const axiosSecure = axios.create({
-  // baseURL: 'http://localhost:3000/api',
-  baseURL: 'https://course-master-server1.vercel.app/api',
+  baseURL: 'http://localhost:3000/api',
+  // baseURL: 'https://course-master-server1.vercel.app/api',
 });
 
 const useAxiosSecure = () => {

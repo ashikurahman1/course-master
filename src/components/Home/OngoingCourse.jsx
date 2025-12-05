@@ -12,7 +12,7 @@ const OngoingCourse = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    AOS.init({ duration: 800, once: true, offset: 50 });
   }, []);
 
   useEffect(() => {
@@ -35,9 +35,9 @@ const OngoingCourse = () => {
   }
 
   return (
-    <div>
+    <div className="overflow-hidden ">
       <section
-        className="container mx-auto px-4 mb-20 pt-15 pb-15 shadow rounded-md p-10"
+        className="container mx-auto p-5 mb-20 pt-15 pb-15 shadow rounded-md"
         data-aos="fade-up"
       >
         <div>

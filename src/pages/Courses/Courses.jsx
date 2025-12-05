@@ -16,7 +16,7 @@ const Courses = () => {
   const axios = useAxios();
 
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    AOS.init({ duration: 800, once: true, offset: 50 });
   }, []);
 
   const { data, isLoading } = useQuery({

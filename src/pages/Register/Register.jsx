@@ -16,7 +16,7 @@ const Register = () => {
   } = useForm();
 
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    AOS.init({ duration: 800, once: true, offset: 50 });
   }, []);
 
   const handleRegister = async data => {

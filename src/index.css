@@ -20,3 +20,9 @@ textarea:focus {
 .btn {
   color: white;
 }
+
+@media (max-width: 768px) {
+  .aos-animate[data-aos='fade-left'] {
+    transform: translateX(10px) !important;
+  }
+}

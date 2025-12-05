@@ -64,43 +64,45 @@ const reasons = [
 
 const WhyChooseUs = () => {
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    AOS.init({ duration: 800, once: true, offset: 50 });
   }, []);
 
   return (
     <section className="py-30 px-4 bg-gray-50">
       <div className="container mx-auto text-center">
-        <h2
-          className="text-3xl md:text-5xl font-bold mb-5"
-          data-aos="fade-down"
-        >
-          Why Choose <span className="text-primary">Us?</span>
-        </h2>
-        <p
-          className="text-gray-700 mb-12 max-w-2xl mx-auto"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          Course Master is more than just a skill development platform. It is
-          your complete gateway from learning to job placement, with expert
-          guidance at every step.
-        </p>
+        <div className="overflow-hidden">
+          <h2
+            className="text-3xl md:text-5xl font-bold mb-5"
+            data-aos="fade-down"
+          >
+            Why Choose <span className="text-primary">Us?</span>
+          </h2>
+          <p
+            className="text-gray-700 mb-12 max-w-2xl mx-auto"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            Course Master is more than just a skill development platform. It is
+            your complete gateway from learning to job placement, with expert
+            guidance at every step.
+          </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {reasons.map((reason, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center gap-4 hover:shadow-lg transition-shadow duration-300"
-              data-aos="zoom-in"
-              data-aos-delay={index * 100}
-            >
-              <div>{reason.icon}</div>
-              <div>
-                <h4 className="text-xl font-semibold mb-1">{reason.title}</h4>
-                <p className="text-gray-600">{reason.description}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {reasons.map((reason, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center gap-4 hover:shadow-lg transition-shadow duration-300"
+                data-aos="zoom-in"
+                data-aos-delay={index * 100}
+              >
+                <div>{reason.icon}</div>
+                <div>
+                  <h4 className="text-xl font-semibold mb-1">{reason.title}</h4>
+                  <p className="text-gray-600">{reason.description}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

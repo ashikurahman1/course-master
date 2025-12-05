@@ -19,10 +19,12 @@ import EnrollmentManage from '../pages/Dashboard/EnrollmentManage/EnrollmentMana
 import Instructor from '../pages/Instructor/Instructor';
 import Blogs from '../pages/Blogs/Blogs';
 import ContactUs from '../pages/ContactUs/ContactUs';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
 export const router = createBrowserRouter([
   {
     path: '/',
     Component: RootLayout,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       { index: true, Component: Home },
       {
