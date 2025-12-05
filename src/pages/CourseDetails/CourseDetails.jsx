@@ -25,7 +25,7 @@ const CourseDetail = () => {
   });
 
   // Enrollment mutation
-  const loggedInUser = user ? JSON.parse(user) : null;
+  const loggedInUser = user;
   const enrollMutation = useMutation({
     mutationFn: async batch => {
       return axiosSecure.post('/enroll', {
