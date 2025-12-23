@@ -99,6 +99,11 @@ const Login = () => {
             Register
           </Link>
         </p>
+        <div>
+          <h3>Admin Credential:</h3>
+          <p>Email: admin@coursemaster.com</p>
+          <p>Password: Bangladesh71</p>
+        </div>
       </section>
     </div>
   );

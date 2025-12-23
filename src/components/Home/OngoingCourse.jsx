@@ -64,7 +64,10 @@ const OngoingCourse = () => {
                 <h2 className="text-xl font-semibold text-gray-800 mb-2 line-clamp-1">
                   {course?.title}
                 </h2>
-                <p className="text-gray-600 mb-4 line-clamp-2">
+                <p
+                  className="text-gray-600 mb-4 line-clamp-2 prose"
+                  dangerouslySetInnerHTML={{ __html: course.description }}
+                >
                   {course?.description}
                 </p>
 
