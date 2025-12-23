@@ -66,10 +66,10 @@ const OngoingCourse = () => {
                 </h2>
                 <p
                   className="text-gray-600 mb-4 line-clamp-2 prose"
-                  dangerouslySetInnerHTML={{ __html: course.description }}
-                >
-                  {course?.description}
-                </p>
+                  dangerouslySetInnerHTML={{
+                    __html: course?.description || '',
+                  }}
+                />
 
                 {/* Instructor Info */}
                 <div className="flex items-center mb-4">
