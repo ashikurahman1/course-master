@@ -121,10 +121,12 @@ const Courses = () => {
                   {course?.title}
                 </h2>
 
-                <p className="text-gray-600 mb-4 line-clamp-2">
-                  {course?.description}
-                </p>
-
+                <p
+                  className="text-gray-600 mb-4 line-clamp-2 prose"
+                  dangerouslySetInnerHTML={{
+                    __html: course?.description || '',
+                  }}
+                />
                 <div className="flex items-center mb-4">
                   <img
                     src={course?.instructor?.avatar}
