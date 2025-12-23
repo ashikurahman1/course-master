@@ -8,7 +8,7 @@ const ContactUs = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+    <div className="pt-30 min-h-screen bg-gray-100 flex items-center justify-center p-6">
       <div
         className="card bg-base-100 shadow-xl w-full max-w-2xl p-8"
         data-aos="fade-up"

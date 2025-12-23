@@ -27,7 +27,10 @@ const CourseDetail = () => {
 
   // Enrollment mutation
   const loggedInUser = user;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0b53ed0e770e6ee4749249abf66919e609dc98c0
   const enrollMutation = useMutation({
     mutationFn: async batch => {
       return axiosSecure.post('/enroll', {
